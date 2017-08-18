@@ -5,12 +5,25 @@ Looking at the layout of the app-screen I would say:
 - SearchBar
 - Results
 - Playlist
+- ResultsSong
+- PlaylistSong
+
+with super classes:
 - Song
 - SongList
 
-In that case the Song and SongList components need to be written in a way that makes them suitable for use in both the Results and the Playlist component. That could be accomplished by writing an parent component class Song and SongList and then extend two Component classes from the Song Component class:
-- ResultsSong
-- PlaylistSong
-and extend two Component classes from the SongList Component class.
-- ResultsSongList
-- PlaylistSongList
+Results and Playlist may be extended from a super class SongList, The items in both lists (ResultsSong and PlaylistSong) may be extended from a super class Song.
+
+Since I don’t want to deal with (re)writing css and html I will have a look at the supplied code to see what is expected.
+
+After taking a look at the supplied html-file I will use the following component-names:
+- App
+- SearchBar
+- SearchResultTracks
+- PlayListTracks
+- SearchResultTrack
+- PlayListTrack
+
+and as super class for SearchResultTracks and PlayListTracks respectively SearchResultTrack and PlayListTrack:
+- Tracks
+- Track
