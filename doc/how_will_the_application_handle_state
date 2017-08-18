@@ -42,6 +42,7 @@ import { Tree } from ‘./Tree’
 8.
 if a stateful component needs to pass a prop (with a piece of state) to a stateless component, that must be done within its render() method.
 
+
 Now specifically…
 
 App will be a stateful component, storing information:
