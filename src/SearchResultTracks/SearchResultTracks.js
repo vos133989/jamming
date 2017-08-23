@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './SearchResultTracks.css';
-import { SearchResultTrackList } from './SearchResultTrackList';
+import { SearchResultTrackList } from '../SearchResultTrackList/SearchResultTrackList';
 
 export class SearchResultTracks extends Component {
   render() {
