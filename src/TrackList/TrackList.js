@@ -2,11 +2,9 @@ import React, { Component } from 'react';
 import './TrackList.css';
 import { Track } from '../Track/Track';
 
-const _tracks = ['','' ,'' ,'' ,''];
-
 export class TrackList extends Component {
   render() {
-    const tracks = _tracks.map(track => <Track action={this.props.action}/>);
+    const tracks = this.props.tracks.map((track, id) => <Track key={id} action={this.props.action} track={track}/>);
     return (
       <div className="TrackList">
         {tracks}

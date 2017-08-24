@@ -7,7 +7,7 @@ export class SearchResultTracks extends Component {
     return (
       <div className="SearchResults">
         <h2>Results</h2>
-        <TrackList action='+'/>
+        <TrackList action='+' tracks={this.props.searchResultTracks} />
       </div>
     );
   }
