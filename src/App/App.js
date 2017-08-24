@@ -20,7 +20,7 @@ const searchResultTracks = [
 
 const playListTracks = [
   track,
-  track, 
+  track,
   track
 ];
 
@@ -32,8 +32,8 @@ class App extends Component {
         <div className="App">
           <SearchBar />
           <div className="App-playlist">
-            <SearchResultTracks />
-            <PlayListTracks />
+            <SearchResultTracks searchResultTracks={searchResultTracks} />
+            <PlayListTracks playListTracks={playListTracks} />
           </div>
         </div>
       </div>
