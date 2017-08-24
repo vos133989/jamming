@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './PlayListTrack.css';
+import './Track.css';
 
 const track = {
   name: 'Test Songname',
@@ -7,7 +7,7 @@ const track = {
   artist: 'Test Artist'
 };
 
-export class PlayListTrack extends Component {
+export class Track extends Component {
   render() {
     return (
       <div className="Track">
@@ -15,7 +15,7 @@ export class PlayListTrack extends Component {
           <h3>{track.name}</h3>
           <p>{track.artist} | {track.album}</p>
         </div>
-        <a className="Track-action">-</a>
+        <a className="Track-action">{this.props.action}</a>
       </div>
     );
   }
