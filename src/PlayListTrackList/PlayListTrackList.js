@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './PlayListTrackList.css';
 import { PlayListTrack } from '../PlayListTrack/PlayListTrack';
 
-const tracks = ['','' ,'' ,'' ,''];
+const tracks = ['','' ,''];
 
 export class PlayListTrackList extends Component {
   render() {

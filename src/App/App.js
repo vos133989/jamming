@@ -4,6 +4,26 @@ import { SearchBar } from '../SearchBar/SearchBar';
 import { SearchResultTracks } from '../SearchResultTracks/SearchResultTracks';
 import { PlayListTracks } from '../PlayListTracks/PlayListTracks';
 
+const track = {
+  name: 'Test Songname',
+  album: 'Test Album',
+  artist: 'Test Artist'
+};
+
+const searchResultTracks = [
+  track,
+  track,
+  track,
+  track,
+  track
+];
+
+const playListTracks = [
+  track,
+  track, 
+  track
+];
+
 class App extends Component {
   render() {
     return (
