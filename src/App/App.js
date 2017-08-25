@@ -25,12 +25,17 @@ const playListTracks = [
 ];
 
 class App extends Component {
+
+  searchSpotify(term) {
+    console.log(`Searching Spotify with ${term}`);
+  }
+
   render() {
     return (
       <div>
         <h1>Ja<span className="highlight">mmm</span>ing</h1>
         <div className="App">
-          <SearchBar />
+          <SearchBar searchSpotify={this.searchSpotify} />
           <div className="App-playlist">
             <SearchResultTracks searchResultTracks={searchResultTracks} />
             <PlayListTracks playListTracks={playListTracks} />
