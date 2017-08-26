@@ -11,7 +11,7 @@ export class Track extends Component {
     if (this.props.action==='+') {
       this.props.addTrack(this.props.track);
     } else {
-      // TODO call removeTrack()
+      this.props.removeTrack(this.props.id);
     }
   }
 

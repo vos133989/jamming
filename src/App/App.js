@@ -23,6 +23,7 @@ class App extends Component {
     super(props);
     this.state = { playListTracks: [ track, track, track ] };
     this.addTrack = this.addTrack.bind(this);
+    this.removeTrack = this.removeTrack.bind(this);
   }
 
   searchSpotify(term) {
@@ -31,6 +32,11 @@ class App extends Component {
 
   addTrack(track) {
     this.state.playListTracks.push(track);
+    this.setState({ playListTracks: this.state.playListTracks });
+  }
+
+  removeTrack(index) {
+    this.state.playListTracks.splice(index,1);
     this.setState({ playListTracks: this.state.playListTracks });
   }
 
@@ -44,7 +50,9 @@ class App extends Component {
             <SearchResultTracks
               addTrack={this.addTrack}
               searchResultTracks={searchResultTracks} />
-            <PlayListTracks playListTracks={this.state.playListTracks} />
+            <PlayListTracks
+              removeTrack={this.removeTrack}
+              playListTracks={this.state.playListTracks} />
           </div>
         </div>
       </div>

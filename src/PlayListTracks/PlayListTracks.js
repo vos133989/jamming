@@ -9,6 +9,7 @@ export class PlayListTracks extends Component {
       <div className="Playlist">
         <input value="New Playlist" />
         <TrackList
+          removeTrack={this.props.removeTrack}
           action='-'
           tracks={this.props.playListTracks} />
         <a className="Playlist-save">SAVE TO SPOTIFY</a>
