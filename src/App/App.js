@@ -18,16 +18,20 @@ const searchResultTracks = [
   track
 ];
 
-const playListTracks = [
-  track,
-  track,
-  track
-];
-
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { playListTracks: [ track, track, track ] };
+    this.addTrack = this.addTrack.bind(this);
+  }
 
   searchSpotify(term) {
     console.log(`Searching Spotify with ${term}`);
+  }
+
+  addTrack(track) {
+    this.state.playListTracks.push(track);
+    this.setState({ playListTracks: this.state.playListTracks });
   }
 
   render() {
@@ -37,8 +41,10 @@ class App extends Component {
         <div className="App">
           <SearchBar searchSpotify={this.searchSpotify} />
           <div className="App-playlist">
-            <SearchResultTracks searchResultTracks={searchResultTracks} />
-            <PlayListTracks playListTracks={playListTracks} />
+            <SearchResultTracks
+              addTrack={this.addTrack}
+              searchResultTracks={searchResultTracks} />
+            <PlayListTracks playListTracks={this.state.playListTracks} />
           </div>
         </div>
       </div>
