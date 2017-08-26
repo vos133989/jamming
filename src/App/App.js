@@ -40,6 +40,11 @@ class App extends Component {
     this.setState({ playListTracks: this.state.playListTracks });
   }
 
+  saveToSpotify(tracks, name) {
+    const playListTracks = tracks.map(track => JSON.stringify(track)).join('\n');
+    console.log(`Saving tracks: \n${playListTracks} \nto Spotify to Playlist ${name}`)
+  }
+
   render() {
     return (
       <div>
@@ -52,7 +57,8 @@ class App extends Component {
               searchResultTracks={searchResultTracks} />
             <PlayListTracks
               removeTrack={this.removeTrack}
-              playListTracks={this.state.playListTracks} />
+              playListTracks={this.state.playListTracks}
+              saveToSpotify={this.saveToSpotify} />
           </div>
         </div>
       </div>
