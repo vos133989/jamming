@@ -3,6 +3,7 @@ import './App.css';
 import { SearchBar } from '../SearchBar/SearchBar';
 import { SearchResultTracks } from '../SearchResultTracks/SearchResultTracks';
 import { PlayListTracks } from '../PlayListTracks/PlayListTracks';
+import Spotify from '../../util/Spotify';
 
 const track = {
   name: 'Test Songname',
@@ -10,24 +11,22 @@ const track = {
   artist: 'Test Artist'
 };
 
-const searchResultTracks = [
-  track,
-  track,
-  track,
-  track,
-  track
-];
-
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { playListTracks: [ track, track, track ] };
+    this.state = {
+      playListTracks: [ track, track, track ],
+      searchResultTracks: []
+     };
     this.addTrack = this.addTrack.bind(this);
     this.removeTrack = this.removeTrack.bind(this);
+    this.searchSpotify = this.searchSpotify.bind(this);
   }
 
   searchSpotify(term) {
     console.log(`Searching Spotify with ${term}`);
+    return Spotify.search(term)
+    .then(tracks => this.setState( { searchResultTracks: tracks } ));
   }
 
   addTrack(track) {
@@ -42,7 +41,10 @@ class App extends Component {
 
   saveToSpotify(tracks, name) {
     const playListTracks = tracks.map(track => JSON.stringify(track)).join('\n');
-    console.log(`Saving tracks: \n${playListTracks} \nto Spotify to Playlist ${name}`)
+    console.log(`Saving tracks: \n${playListTracks} \nto Spotify to Playlist ${name}`);
+    const uris = tracks.map(track => `${track.uri}`)
+    return Spotify.save(uris, name)
+    .then(console.log('Playlist saved to Spotify'));
   }
 
   render() {
@@ -54,7 +56,7 @@ class App extends Component {
           <div className="App-playlist">
             <SearchResultTracks
               addTrack={this.addTrack}
-              searchResultTracks={searchResultTracks} />
+              searchResultTracks={this.state.searchResultTracks} />
             <PlayListTracks
               removeTrack={this.removeTrack}
               playListTracks={this.state.playListTracks}
