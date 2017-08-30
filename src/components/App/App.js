@@ -5,17 +5,11 @@ import { SearchResultTracks } from '../SearchResultTracks/SearchResultTracks';
 import { PlayListTracks } from '../PlayListTracks/PlayListTracks';
 import Spotify from '../../util/Spotify';
 
-const track = {
-  name: 'Test Songname',
-  album: 'Test Album',
-  artist: 'Test Artist'
-};
-
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      playListTracks: [ track, track, track ],
+      playListTracks: [],
       searchResultTracks: []
      };
     this.addTrack = this.addTrack.bind(this);
