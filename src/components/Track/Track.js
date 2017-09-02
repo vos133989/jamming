@@ -9,22 +9,27 @@ export class Track extends Component {
 
   handleClick(e) {
     if (this.props.action==='+') {
-      this.props.addTrack(this.props.track);
+      this.props.addTrack(this.props.track, this.props.id);
     } else {
       this.props.removeTrack(this.props.id);
     }
+  }
+
+  setAddedClass() {
+    return this.props.track.added && this.props.action === '+' ? 'Added' : '';
   }
 
   render() {
     return (
       <div className="Track">
         <div className="Track-information">
-          <h3>{this.props.track.name}</h3>
+          <h3
+            className={this.setAddedClass()}>{this.props.track.name}</h3>
           <p>{this.props.track.artist} | {this.props.track.album}</p>
         </div>
         <a
           onClick={this.handleClick}
-          className="Track-action">{this.props.action}</a>
+          className={"Track-action " + this.setAddedClass()}>{this.props.action}</a>
       </div>
     );
   }
