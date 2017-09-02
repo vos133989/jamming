@@ -23,12 +23,22 @@ class App extends Component {
     .then(tracks => this.setState( { searchResultTracks: tracks } ));
   }
 
-  addTrack(track) {
+  addTrack(track, index) {
     this.state.playListTracks.push(track);
     this.setState({ playListTracks: this.state.playListTracks });
+    const tracksArray = this.state.searchResultTracks;
+    tracksArray[index].added = true;
+    this.setState({ searchResultTracks: tracksArray });
   }
 
   removeTrack(index) {
+    const id = this.state.playListTracks[index].id;
+    const tracksWithThisId = this.state.playListTracks.filter(track => track.id === id);
+    if (tracksWithThisId.length===1) {
+      const tracksArray = this.state.searchResultTracks;
+      const trackIndex = this.state.searchResultTracks.findIndex(track => track.id === id);
+      tracksArray[trackIndex].added = '';
+    }
     this.state.playListTracks.splice(index,1);
     this.setState({ playListTracks: this.state.playListTracks });
   }
